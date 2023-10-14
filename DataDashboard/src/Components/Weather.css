@@ -1,0 +1,69 @@
+
+.center-table {
+    margin: 0 auto; /* Centrar horizontalmente */
+    border-collapse: collapse; /* Combinar bordes de celdas */
+    width: auto; /* Ajustar el ancho al contenido */
+    max-width: 100%; /* No exceder el ancho del contenedor */
+    table-layout: auto; /* Ajustar el ancho de la tabla */
+  }
+  
+  .center-table th, .center-table td {
+    padding: 8px; /* Agregar espacio entre contenido y bordes de celdas */
+    border: 1px solid #ddd; /* Agregar bordes a celdas */
+  }
+
+  input{
+    margin:15px;
+  }
+
+  label{
+    margin:15px;
+  }
+
+  
+
+
+
+.table-container {
+    height: calc(100vh - 100px); 
+  }
+  
+  .center-table {
+    margin: 0 auto; 
+  }
+
+  /* Weather.css */
+
+/* Weather.css */
+
+.cards-row {
+  display: flex; /* Display the cards in a row */
+  justify-content: space-between; /* Distribute space between cards */
+  align-items: center; /* Align the cards vertically in the center */
+  width: 100%; /* Occupy the full width of the container */
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  flex-grow: 1; /* Each card occupies an equal amount of space */
+  max-width: calc(33.33% - 20px); /* To leave a little space between cards */
+  margin:5px
+}
+
+.card-title {
+  font-size: 15px;
+  margin: 0;
+}
+
+.card-text {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.card-text p {
+  margin: 5px 0;
+}
