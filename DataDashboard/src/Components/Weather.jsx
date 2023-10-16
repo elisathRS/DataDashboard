@@ -4,9 +4,6 @@ import './sideNav';
 import SideNav from './sideNav';
 import MoonImage from './MoonPhase';
 
-
-
-
 function Weather() {
   const [originalList, setOriginalList] = useState([]); 
   const [list, setList] = useState([]);
@@ -55,46 +52,46 @@ function Weather() {
 
   
   return (
-    <div>
+    <view>
      
-     <div className="cards-row">
-  <div className="card">
-    <div className="card-body">
-      <h3 className="card-title">Date</h3>
-      {list.length > 0 && (
-        <div className="card-text">
-          <p>{originalList[0].datetime}</p>
-        </div>
-      )}
-    </div>
-  </div>
+     <view className="cards-row">
+      <view className="card">
+        <view className="card-body">
+          <h3 className="card-title">Date</h3>
+          {list.length > 0 && (
+            <div className="card-text">
+              <p>{originalList[0].datetime}</p>
+            </div>
+          )}
+        </view>
+      </view>
 
-  <div className="card">
-    <div className="card-body">
+  <view className="card">
+    <view className="card-body">
       <h3 className="card-title">Temperature</h3>
       {list.length > 0 && (
-        <div className="card-text">
+        <view className="card-text">
           <p>{originalList[0].temp}°C</p>
-        </div>
+        </view>
       )}
-    </div>
-  </div>
+    </view>
+  </view>
 
-  <div className="card">
-    <div className="card-body">
+  <view className="card">
+    <view className="card-body">
       <h3 className="card-title">Moon Phase</h3>
       {list.length > 0 && (
-        <div className="card-text">
+        <view className="card-text">
           <p><MoonImage moonphase={originalList[0].moonphase} /></p>
-        </div>
+        </view>
       )}
-    </div>
-  </div>
-</div>
+    </view>
+  </view>
+</view>
+
 
 <br></br>
-
-      
+   
       <form onSubmit={handleSubmit}>
         <label>
           Date:
@@ -109,7 +106,7 @@ function Weather() {
           <input
             type="range"
             min="0"
-            max="0.5"
+            max="1"
             step="0.01"
             value={moonPhase}
             onChange={(event) => setMoonPhase(parseFloat(event.target.value))}
@@ -118,7 +115,7 @@ function Weather() {
         <button type="submit">Search</button>
       </form>
       <br></br>
-      <div className="table-container">
+      <view className="table-container">
         <table className="center-table">
           <thead>
             <tr>
@@ -141,9 +138,9 @@ function Weather() {
             ))}
           </tbody>
         </table>
-      </div>
+      </view>
       <SideNav />
-    </div>
+    </view>
   );
 }
 

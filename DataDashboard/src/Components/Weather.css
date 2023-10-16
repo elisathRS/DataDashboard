@@ -8,8 +8,8 @@
   }
   
   .center-table th, .center-table td {
-    padding: 8px; /* Agregar espacio entre contenido y bordes de celdas */
-    border: 1px solid #ddd; /* Agregar bordes a celdas */
+    padding: 8px; 
+    border: 1px solid #ddd;
   }
 
   input{
@@ -32,7 +32,7 @@
     margin: 0 auto; 
   }
 
-  /* Weather.css */
+
 
 /* Weather.css */
 
