@@ -10,7 +10,6 @@ function App() {
     
       <div>
         <h1>Weather in Miami, MIA</h1>
-        <SideNav />
         <Weather />
         
       </div>

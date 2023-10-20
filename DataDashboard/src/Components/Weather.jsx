@@ -3,12 +3,29 @@ import './Weather.css';
 import './sideNav';
 import SideNav from './sideNav';
 import MoonImage from './MoonPhase';
+import Navigation from './Navigation';
+import {Link} from "react-router-dom";
+import {
+  LineChart,
+  BarChart,
+  ComposedChart,
+  Line,
+  Area,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  Scatter,
+  ResponsiveContainer,
+} from "recharts";
 
 function Weather() {
-  const [originalList, setOriginalList] = useState([]); 
+  const [originalList, setOriginalList] = useState([]);
   const [list, setList] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
-  const [moonPhase, setMoonPhase] = useState(0); 
+  const [moonPhase, setMoonPhase] = useState(0);
 
   useEffect(() => {
     fetchAllWeatherData().catch(console.error);
@@ -21,12 +38,11 @@ function Weather() {
     const json = await response.json();
     console.log(json);
     setOriginalList(json.days);
-    console.log(json.days);
     setList(json.days);
   };
 
   const filterData = () => {
-    let filteredDataList = [...originalList]; 
+    let filteredDataList = [...originalList];
 
     // Filter by date
     if (selectedDate !== "") {
@@ -50,48 +66,45 @@ function Weather() {
     filterData();
   };
 
-  
   return (
-    <view>
-     
-     <view className="cards-row">
-      <view className="card">
-        <view className="card-body">
-          <h3 className="card-title">Date</h3>
-          {list.length > 0 && (
-            <div className="card-text">
-              <p>{originalList[0].datetime}</p>
-            </div>
-          )}
-        </view>
-      </view>
+    <div>
+      <div className="cards-row">
+        <div className="card">
+          <div className="card-body">
+            <h3 className="card-title">Date</h3>
+            {list.length > 0 && (
+              <div className="card-text">
+                <p>{originalList[0].datetime}</p>
+              </div>
+            )}
+          </div>
+        </div>
 
-  <view className="card">
-    <view className="card-body">
-      <h3 className="card-title">Temperature</h3>
-      {list.length > 0 && (
-        <view className="card-text">
-          <p>{originalList[0].temp}°C</p>
-        </view>
-      )}
-    </view>
-  </view>
+        <div className="card">
+          <div className="card-body">
+            <h3 className="card-title">Temperature</h3>
+            {list.length > 0 && (
+              <div className="card-text">
+                <p>{originalList[0].temp}°C</p>
+              </div>
+            )}
+          </div>
+        </div>
 
-  <view className="card">
-    <view className="card-body">
-      <h3 className="card-title">Moon Phase</h3>
-      {list.length > 0 && (
-        <view className="card-text">
-          <p><MoonImage moonphase={originalList[0].moonphase} /></p>
-        </view>
-      )}
-    </view>
-  </view>
-</view>
+        <div className="card">
+          <div className="card-body">
+            <h3 className="card-title">Moon Phase</h3>
+            {list.length > 0 && (
+              <div className="card-text">
+                <p><MoonImage moonphase={originalList[0].moonphase} /></p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
 
+      <br></br>
 
-<br></br>
-   
       <form onSubmit={handleSubmit}>
         <label>
           Date:
@@ -114,8 +127,10 @@ function Weather() {
         </label>
         <button type="submit">Search</button>
       </form>
+
       <br></br>
-      <view className="table-container">
+
+      <div className="table-container">
         <table className="center-table">
           <thead>
             <tr>
@@ -124,6 +139,7 @@ function Weather() {
               <th>Moon phase</th>
               <th>Temperature</th>
               <th>Conditions</th>
+              <th>Details</th>
             </tr>
           </thead>
           <tbody>
@@ -131,16 +147,45 @@ function Weather() {
               <tr key={day.id}>
                 <td style={{ whiteSpace: 'nowrap' }}>{day.datetime}</td>
                 <td>{day.sunset}</td>
-                <td><MoonImage moonphase={day.moonphase} /></td>
+                <td key={day.id + 'moonphase'}><MoonImage moonphase={day.moonphase} /></td>
                 <td>{day.temp}</td>
                 <td>{day.conditions}</td>
+                <td>
+                  <Link to={`details/${day.datetime}`}>More Info</Link>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </view>
-      <SideNav />
-    </view>
+      </div>
+      <div className="graph-container">
+        <h3>Moon Phase Chart</h3>
+        <ResponsiveContainer width="100%" height={400}>
+          <LineChart data={list}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="datetime" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="moonphase" stroke="#8884d8" name="Moon Phase" />
+          </LineChart>
+        </ResponsiveContainer>
+    </div>
+      <div className="graph-container">
+        <h3>Temperature Chart (Bar)</h3>
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart data={list}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="datetime" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="temp" fill="#8884d8" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+    
   );
 }
 

@@ -1,18 +1,27 @@
 import React from 'react';
+import { Outlet, Link } from "react-router-dom";
 
-const SideNav = () => (
-  <div>
- 
-  <div className="sidenav">
-  <h2>WeatherApp </h2>
-    <div className="vertical-menu">
-    <a href="#" className="active">Dashboard</a>
-    <a href="#">Search</a>
-    <a href="#">About</a>
+const SideNav = () => {
+  return (
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/about">
+              About
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <Outlet />
     </div>
-  </div>
-
-  </div>
 );
+
+}
 
 export default SideNav;
