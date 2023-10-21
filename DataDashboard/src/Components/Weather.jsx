@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './Weather.css';
-import './sideNav';
-import SideNav from './sideNav';
+
 import MoonImage from './MoonPhase';
 import Navigation from './Navigation';
 import {Link} from "react-router-dom";
+
+import { StyleSheet } from 'react';
 import {
   LineChart,
   BarChart,
@@ -67,7 +68,8 @@ function Weather() {
   };
 
   return (
-    <div>
+    <div className="container">
+      <div className="left-container"> 
       <div className="cards-row">
         <div className="card">
           <div className="card-body">
@@ -158,9 +160,11 @@ function Weather() {
           </tbody>
         </table>
       </div>
+      </div>
+      <div className="rightContainer">
       <div className="graph-container">
         <h3>Moon Phase Chart</h3>
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width={500} height={400}>
           <LineChart data={list}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="datetime" />
@@ -171,9 +175,10 @@ function Weather() {
           </LineChart>
         </ResponsiveContainer>
     </div>
+    <br></br>
       <div className="graph-container">
         <h3>Temperature Chart (Bar)</h3>
-        <ResponsiveContainer width="100%" height={400}>
+        <ResponsiveContainer width={500} height={400}>
           <BarChart data={list}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="datetime" />
@@ -184,9 +189,9 @@ function Weather() {
           </BarChart>
         </ResponsiveContainer>
       </div>
+      </div>
     </div>
     
   );
 }
-
 export default Weather;

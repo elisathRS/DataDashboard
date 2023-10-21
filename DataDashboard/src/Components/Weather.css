@@ -1,10 +1,28 @@
 
+.container {
+  display: flex;
+  width:100%;
+}
+
+.left-container {
+  flex: 1; /* Takes 50% of the available space */
+  background-color: #f1f1f1;
+  padding: 50px; /* Add padding as needed */
+  
+}
+
+.right-container {
+  flex: 1; /* Takes 50% of the available space */
+  background-color: #e0e0e0;
+  padding: 50px; /* Add padding as needed */
+}
+
 .center-table {
-    margin: 0 auto; /* Centrar horizontalmente */
-    border-collapse: collapse; /* Combinar bordes de celdas */
-    width: auto; /* Ajustar el ancho al contenido */
-    max-width: 100%; /* No exceder el ancho del contenedor */
-    table-layout: auto; /* Ajustar el ancho de la tabla */
+    margin: 0 auto; 
+    border-collapse: collapse; 
+    width: auto; 
+    max-width: 100%; 
+    table-layout: auto;
   }
   
   .center-table th, .center-table td {
@@ -21,9 +39,6 @@
   }
 
   
-
-
-
 .table-container {
     height: calc(100vh - 100px); 
   }

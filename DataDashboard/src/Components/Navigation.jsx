@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 const Navigation = () => {
     const navStyle = {
-        display: 'flex',      // Para mostrar los elementos en línea
-        listStyle: 'none',    // Para quitar los puntos de la lista
-        padding: 0,           // Elimina el espacio interno
+        display: 'flex',      
+        listStyle: 'none',    
+        padding: 0,           
       };
     
       const listItemStyle = {
-        margin: '0 10px',     // Margen entre elementos
+        margin: '0 10px',     
       };
 
   return (
